@@ -49,5 +49,11 @@ namespace Football.API.Controllers
                 return NotFound();
             return CreatedAtAction(nameof(GetByIdAsync), new { id = response.Id }, response);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteAsync(int id)
+        {
+            return Ok(await _managerService.DeleteAsync(id));
+        }
     }
 }

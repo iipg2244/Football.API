@@ -37,6 +37,8 @@ namespace Football.API
             services.AddDbContext<FootballContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IManagerService, ManagerService>();
+            services.AddScoped<IPlayerService, PlayerService>();
+            services.AddScoped<IRefereeService, RefereeService>();
 
             services.AddMvc(options => options.SuppressAsyncSuffixInActionNames = false).AddNewtonsoftJson(options =>
             {

@@ -8,12 +8,12 @@ using Microsoft.Extensions.Logging;
 
 namespace Football.API.Services
 {
-    public class ManagerService : IManagerService
+    public class PlayerService : IPlayerService
     {
-        private readonly ILogger<ManagerService> _logger;
+        private readonly ILogger<PlayerService> _logger;
         private readonly FootballContext _footballContext;
 
-        public ManagerService(FootballContext footballContext, ILogger<ManagerService> logger)
+        public PlayerService(FootballContext footballContext, ILogger<PlayerService> logger)
         {
             _footballContext = footballContext;
             _logger = logger;
@@ -21,42 +21,42 @@ namespace Football.API.Services
 
         //
         // Summary:
-        //     Returns the entire list of managers ordered by name.
+        //     Returns the entire list of players ordered by name.
         //
         // Returns:
-        //     A List<Manager>.
+        //     A List<Player>.
         public async Task<object> GetAsync()
         {
             try
             {
-                var managers = await _footballContext.Managers.OrderBy(x => x.Name).ToListAsync();
-                if (managers != null)
+                var players = await _footballContext.Players.OrderBy(x => x.Name).ToListAsync();
+                if (players != null)
                 {
-                    return managers;
+                    return players;
                 }
             }
             catch (Exception e)
             {
                 _logger.LogInformation(e.ToString());
             }
-            return new List<Manager>();
+            return new List<Player>();
         }
 
         //
         // Summary:
-        //     Returns the manager by id.
+        //     Returns the player by id.
         //
         // Parameters:
         //     id:
-        //     Manager Identifier Code.
+        //     Player Identifier Code.
         //
         // Returns:
-        //     A Manager or null if not found or there is an error.
+        //     A Player or null if not found or there is an error.
         public async Task<object> GetByIdAsync(int id)
         {
             try
             {
-                return await _footballContext.Managers.FindAsync(id);
+                return await _footballContext.Players.FindAsync(id);
             }
             catch (Exception e)
             {
@@ -67,22 +67,22 @@ namespace Football.API.Services
 
         //
         // Summary:
-        //     Add sent manager.
+        //     Add sent player.
         //
         // Parameters:
-        //     manager:
-        //     Manager object.
+        //     player:
+        //     Player object.
         //
         // Returns:
-        //     The added manager or null if there is an error.
-        public async Task<object> PostAsync(Manager manager)
+        //     The added player or null if there is an error.
+        public async Task<object> PostAsync(Player player)
         {
             try
             {
-                manager.Id = 0;
-                await _footballContext.Managers.AddAsync(manager);
+                player.Id = 0;
+                await _footballContext.Players.AddAsync(player);
                 await _footballContext.SaveChangesAsync();
-                return manager;
+                return player;
             }
             catch (Exception e)
             {
@@ -93,29 +93,30 @@ namespace Football.API.Services
 
         //
         // Summary:
-        //     Update the manager by id.
+        //     Update the player by id.
         //
         // Parameters:
         //     id:
-        //     Manager Identifier Code.
+        //     Player Identifier Code.
         //
-        //     manager:
-        //     Manager object.
+        //     player:
+        //     Player object.
         //
         // Returns:
-        //     The updated manager or null if there is an error.
-        public async Task<object> UpdateAsync(int id, Manager manager)
+        //     The updated player or null if there is an error.
+        public async Task<object> UpdateAsync(int id, Player player)
         {
             try
             {
-                var managerTmp = await _footballContext.Managers.FindAsync(id);
-                if (managerTmp != null)
+                var playerTmp = await _footballContext.Players.FindAsync(id);
+                if (playerTmp != null)
                 {
-                    managerTmp.Name = manager.Name.Left(100);
-                    managerTmp.YellowCard = manager.YellowCard;
-                    managerTmp.RedCard = manager.RedCard;
+                    playerTmp.Name = player.Name.Left(100);
+                    playerTmp.YellowCard = player.YellowCard;
+                    playerTmp.RedCard = player.RedCard;
+                    playerTmp.MinutesPlayed = player.MinutesPlayed;
                     await _footballContext.SaveChangesAsync();
-                    return managerTmp;
+                    return playerTmp;
                 }
             }
             catch (Exception e)
@@ -127,11 +128,11 @@ namespace Football.API.Services
 
         //
         // Summary:
-        //     Delete the manager by id.
+        //     Delete the player by id.
         //
         // Parameters:
         //     id:
-        //     Manager Identifier Code.
+        //     Player Identifier Code.
         //
         // Returns:
         //     true is all ok or false if not found or there is an error.
@@ -139,10 +140,10 @@ namespace Football.API.Services
         {
             try
             {
-                var managerTmp = await _footballContext.Managers.FindAsync(id);
-                if (managerTmp != null)
+                var playerTmp = await _footballContext.Players.FindAsync(id);
+                if (playerTmp != null)
                 {
-                    _footballContext.Managers.Remove(managerTmp);
+                    _footballContext.Players.Remove(playerTmp);
                     await _footballContext.SaveChangesAsync();
                     return true;
                 }
