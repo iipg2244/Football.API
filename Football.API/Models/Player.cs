@@ -2,7 +2,7 @@
 
 namespace Football.API.Models
 {
-    public partial class Player
+    public partial class Player : Person
     {
         public Player()
         {
@@ -10,8 +10,6 @@ namespace Football.API.Models
             MatchesHouse = new HashSet<PlayerMatchHouse>();
         }
 
-        public int Id { get; set; }
-        public string Name { get; set; }
         public int YellowCard { get; set; }
         public int RedCard { get; set; }
         public int MinutesPlayed { get; set; }

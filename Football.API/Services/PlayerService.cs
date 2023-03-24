@@ -80,6 +80,7 @@ namespace Football.API.Services
             try
             {
                 player.Id = 0;
+                player.Name = player.Name.Left(100);
                 await _footballContext.Players.AddAsync(player);
                 await _footballContext.SaveChangesAsync();
                 return player;

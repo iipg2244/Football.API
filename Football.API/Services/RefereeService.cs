@@ -80,6 +80,7 @@ namespace Football.API.Services
             try
             {
                 referee.Id = 0;
+                referee.Name = referee.Name.Left(100);
                 await _footballContext.Referees.AddAsync(referee);
                 await _footballContext.SaveChangesAsync();
                 return referee;

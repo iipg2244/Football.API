@@ -1,6 +1,8 @@
 ﻿using Football.API.Models;
+using Football.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Football.API.Controllers
 {
@@ -8,45 +10,51 @@ namespace Football.API.Controllers
     [ApiController]
     public class MatchController : ControllerBase
     {
+        private readonly IMatchService _matchService;
         private readonly FootballContext footballContext;
-        public MatchController(FootballContext footballContext)
+        public MatchController(FootballContext footballContext, IMatchService matchService)
         {
             this.footballContext = footballContext;
+            _matchService = matchService;
         }
 
         [HttpGet]
-        [Route("")]
-        public ActionResult<IEnumerable<Match>> Get()
+        public async Task<ActionResult<IEnumerable<Match>>> GetAsync()
         {
-            return this.Ok(footballContext.Matches);
+            return Ok(await _matchService.GetAsync());
         }
-        
-        [HttpGet] 
-        [Route("{id}")]
-        public ActionResult GetById(int id)
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetByIdAsync(int id)
         {
-            var response = footballContext.Matches.Find(id);
-            if (response == default)
-                this.NotFound();
-            return this.Ok();
+            var response = await _matchService.GetByIdAsync(id);
+            if (response == null)
+                return NotFound();
+            return Ok(response);
         }
 
         [HttpPost]
-        public ActionResult Post(Match match)
+        public async Task<ActionResult> PostAsync([FromBody] Match match)
         {
-            var response = footballContext.Matches.Add(match).Entity;
-            return this.CreatedAtAction("GetById", response.Id, response);
+            var response = (Match)(await _matchService.PostAsync(match));
+            if (response == null)
+                return NotFound();
+            return CreatedAtAction(nameof(GetByIdAsync), new { id = response.Id }, response);
         }
 
-        [HttpPut]
-        [Route("{id}")]
-        public ActionResult Update(int id, Match match)
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateAsync(int id, [FromBody] Match match)
         {
-            if (footballContext.Matches.Find(id) == default)
-                return this.NotFound();
+            var response = (Match)(await _matchService.UpdateAsync(id, match));
+            if (response == null)
+                return NotFound();
+            return CreatedAtAction(nameof(GetByIdAsync), new { id = response.Id }, response);
+        }
 
-            footballContext.Matches.Update(match);
-            return this.Ok();
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteAsync(int id)
+        {
+            return Ok(await _matchService.DeleteAsync(id));
         }
     }
 }

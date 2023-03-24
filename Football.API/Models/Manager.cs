@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Football.API.Models
 {
-    public partial class Manager
+    public partial class Manager :Person
     {
         public Manager()
         {
@@ -12,8 +12,6 @@ namespace Football.API.Models
             AwayMatches = new HashSet<Match>();
         }
 
-        public int Id { get; set; }
-        public string Name { get; set; }
         public int YellowCard { get; set; }
         public int RedCard { get; set; }
 

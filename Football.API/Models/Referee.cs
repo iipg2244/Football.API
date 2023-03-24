@@ -2,15 +2,13 @@
 
 namespace Football.API.Models
 {
-    public partial class Referee
+    public partial class Referee : Person
     {
         public Referee()
         {
             Matches = new HashSet<Match>();
         }
 
-        public int Id { get; set; }
-        public string Name { get; set; }
         public int MinutesPlayed { get; set; }
 
         public virtual ICollection<Match> Matches { get; set; }

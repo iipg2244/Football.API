@@ -39,6 +39,7 @@ namespace Football.API
             services.AddScoped<IManagerService, ManagerService>();
             services.AddScoped<IPlayerService, PlayerService>();
             services.AddScoped<IRefereeService, RefereeService>();
+            services.AddScoped<IMatchService, MatchService>();
 
             services.AddMvc(options => options.SuppressAsyncSuffixInActionNames = false).AddNewtonsoftJson(options =>
             {
