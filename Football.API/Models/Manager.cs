@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿//using Newtonsoft.Json;
+using System.Collections.Generic;
+
 
 namespace Football.API.Models
 {
-    public class Manager
+    public partial class Manager
     {
         public Manager()
         {
@@ -15,7 +17,9 @@ namespace Football.API.Models
         public int YellowCard { get; set; }
         public int RedCard { get; set; }
 
+        //[JsonIgnore]
         public virtual ICollection<Match> HouseMatches { get; set; }
+        //[JsonIgnore]
         public virtual ICollection<Match> AwayMatches { get; set; }
     }
 }

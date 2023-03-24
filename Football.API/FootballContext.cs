@@ -1,5 +1,7 @@
 ﻿using Football.API.Models;
+using Football.API.Models.Others;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Football.API
 {
@@ -27,6 +29,7 @@ namespace Football.API
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
+                    .IsRequired()
                     .HasDefaultValue("");
 
                 entity.Property(e => e.YellowCard)
@@ -43,6 +46,7 @@ namespace Football.API
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
+                    .IsRequired()
                     .HasDefaultValue("");
 
                 entity.Property(e => e.YellowCard)
@@ -62,6 +66,7 @@ namespace Football.API
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
+                    .IsRequired()
                     .HasDefaultValue("");
 
                 entity.Property(e => e.MinutesPlayed)

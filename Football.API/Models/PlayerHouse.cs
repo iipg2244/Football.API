@@ -2,7 +2,7 @@
 
 namespace Football.API.Models
 {
-    public class PlayerMatchHouse : PlayerMatch
+    public partial class PlayerMatchHouse : PlayerMatch
     {
     }
 }

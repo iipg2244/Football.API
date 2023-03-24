@@ -2,7 +2,7 @@
 
 namespace Football.API.Models
 {
-    public class Referee
+    public partial class Referee
     {
         public Referee()
         {

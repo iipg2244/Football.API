@@ -22,7 +22,7 @@ namespace Football.API.Controllers
         }
 
         [HttpGet]
-        [Route("{id}", Name = "GetById")]
+        [Route("{id}")]
         public ActionResult GetById(int id)
         {
             var response = footballContext.Players.Find(id);

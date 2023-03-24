@@ -21,8 +21,8 @@ namespace Football.API.Controllers
             return this.Ok(footballContext.Matches);
         }
         
-        [HttpGet]
-        [Route("{id}", Name = "GetById")]
+        [HttpGet] 
+        [Route("{id}")]
         public ActionResult GetById(int id)
         {
             var response = footballContext.Matches.Find(id);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Football.API.Models
 {
-    public class Match
+    public partial class Match
     {
         public Match()
         {
