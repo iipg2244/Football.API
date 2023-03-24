@@ -13,10 +13,10 @@ namespace Football.API.Services
         private readonly ILogger<ManagerService> _logger;
         private readonly FootballContext _footballContext;
 
-        public ManagerService(FootballContext footballContext, ILogger<ManagerService> logger)
+        public ManagerService(ILogger<ManagerService> logger, FootballContext footballContext)
         {
-            _footballContext = footballContext;
             _logger = logger;
+            _footballContext = footballContext;
         }
 
         //
