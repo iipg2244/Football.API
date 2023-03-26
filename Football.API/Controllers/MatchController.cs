@@ -11,10 +11,9 @@ namespace Football.API.Controllers
     public class MatchController : ControllerBase
     {
         private readonly IMatchService _matchService;
-        private readonly FootballContext footballContext;
-        public MatchController(FootballContext footballContext, IMatchService matchService)
+
+        public MatchController(IMatchService matchService)
         {
-            this.footballContext = footballContext;
             _matchService = matchService;
         }
 

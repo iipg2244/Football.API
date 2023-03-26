@@ -19,6 +19,12 @@ namespace Football.API.Services
             _footballContext = footballContext;
         }
 
+        //
+        // Summary:
+        //     Returns the entire list of of people who have participated in matches and have yellow cards.
+        //
+        // Returns:
+        //     A List<dynamic>.
         public async Task<object> GetYellowCardsAsync()
         {
             try
@@ -33,7 +39,7 @@ namespace Football.API.Services
                           player.Name,
                           TeamName = "PlayerHouse",
                           Total = player.YellowCard
-                      }).Distinct().ToListAsync();
+                      }).Distinct().Where(x => x.Total > 0).ToListAsync();
 
                 var playerAways = await _footballContext.Players.Join(
                       _footballContext.PlayerAways,
@@ -45,7 +51,7 @@ namespace Football.API.Services
                           player.Name,
                           TeamName = "PlayerAway",
                           Total = player.YellowCard
-                      }).Distinct().ToListAsync();
+                      }).Distinct().Where(x => x.Total > 0).ToListAsync();
 
                 var managerHouses = await _footballContext.Managers.Join(
                       _footballContext.Matches,
@@ -57,7 +63,7 @@ namespace Football.API.Services
                           managerHouse.Name,
                           TeamName = "ManagerHouse",
                           Total = managerHouse.YellowCard
-                      }).Distinct().ToListAsync();
+                      }).Distinct().Where(x => x.Total > 0).ToListAsync();
 
                 var managerAways = await _footballContext.Managers.Join(
                       _footballContext.Matches,
@@ -69,7 +75,7 @@ namespace Football.API.Services
                           managerAway.Name,
                           TeamName = "ManagerAway",
                           Total = managerAway.YellowCard
-                      }).Distinct().ToListAsync();
+                      }).Distinct().Where(x => x.Total > 0).ToListAsync();
 
                 playerHouses.AddRange(playerAways);
                 playerHouses.AddRange(managerHouses);
@@ -84,6 +90,12 @@ namespace Football.API.Services
             return new List<dynamic>();
         }
 
+        //
+        // Summary:
+        //     Returns the entire list of of people who have participated in matches and have red cards.
+        //
+        // Returns:
+        //     A List<dynamic>.
         public async Task<object> GetRedCardsAsync()
         {
             try
@@ -98,7 +110,7 @@ namespace Football.API.Services
                           player.Name,
                           TeamName = "PlayerHouse",
                           Total = player.RedCard
-                      }).Distinct().ToListAsync();
+                      }).Distinct().Where(x => x.Total > 0).ToListAsync();
 
                 var playerAways = await _footballContext.Players.Join(
                       _footballContext.PlayerAways,
@@ -110,7 +122,7 @@ namespace Football.API.Services
                           player.Name,
                           TeamName = "PlayerAway",
                           Total = player.YellowCard
-                      }).Distinct().ToListAsync();
+                      }).Distinct().Where(x => x.Total > 0).ToListAsync();
 
                 var managerHouses = await _footballContext.Managers.Join(
                       _footballContext.Matches,
@@ -122,7 +134,7 @@ namespace Football.API.Services
                           managerHouse.Name,
                           TeamName = "ManagerHouse",
                           Total = managerHouse.RedCard
-                      }).Distinct().ToListAsync();
+                      }).Distinct().Where(x => x.Total > 0).ToListAsync();
 
                 var managerAways = await _footballContext.Managers.Join(
                       _footballContext.Matches,
@@ -134,7 +146,7 @@ namespace Football.API.Services
                           managerAway.Name,
                           TeamName = "ManagerAway",
                           Total = managerAway.RedCard
-                      }).Distinct().ToListAsync();
+                      }).Distinct().Where(x => x.Total > 0).ToListAsync();
 
                 playerHouses.AddRange(playerAways);
                 playerHouses.AddRange(managerHouses);
@@ -149,6 +161,12 @@ namespace Football.API.Services
             return new List<dynamic>();
         }
 
+        //
+        // Summary:
+        //     Returns the entire list of of people who have participated in matches and have minutes played.
+        //
+        // Returns:
+        //     A List<dynamic>.
         public async Task<object> GetMinutesPlayedAsync()
         {
             try
@@ -163,7 +181,7 @@ namespace Football.API.Services
                           player.Name,
                           TeamName = "PlayerHouse",
                           Total = player.MinutesPlayed
-                      }).Distinct().ToListAsync();
+                      }).Distinct().Where(x => x.Total > 0).ToListAsync();
 
                 var playerAways = await _footballContext.Players.Join(
                       _footballContext.PlayerAways,
@@ -175,7 +193,7 @@ namespace Football.API.Services
                           player.Name,
                           TeamName = "PlayerAway",
                           Total = player.MinutesPlayed
-                      }).Distinct().ToListAsync();
+                      }).Distinct().Where(x => x.Total > 0).ToListAsync();
 
                 var referees = await _footballContext.Referees.Join(
                       _footballContext.Matches,
@@ -187,7 +205,7 @@ namespace Football.API.Services
                           referee.Name,
                           TeamName = "Referee",
                           Total = referee.MinutesPlayed
-                      }).Distinct().ToListAsync();
+                      }).Distinct().Where(x => x.Total > 0).ToListAsync();
 
                 playerHouses.AddRange(playerAways);
                 playerHouses.AddRange(referees);
