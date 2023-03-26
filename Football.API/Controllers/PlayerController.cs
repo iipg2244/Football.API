@@ -18,7 +18,7 @@ namespace Football.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Player>>> Get()
+        public async Task<IActionResult> Get()
         {
             return Ok(await _playerService.GetAsync());
         }

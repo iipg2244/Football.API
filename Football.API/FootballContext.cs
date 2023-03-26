@@ -7,6 +7,12 @@ namespace Football.API
 {
     public partial class FootballContext : DbContext
     {
+        private readonly string _connectionString = Methods.GetConfigurationRoot().GetConnectionString("DefaultConnection");
+
+        public FootballContext()
+        {
+        }
+
         public FootballContext(DbContextOptions<FootballContext> options)
             : base(options)
         {
@@ -19,6 +25,11 @@ namespace Football.API
         public virtual DbSet<PlayerMatchHouse> PlayerHouses { get; set; } = null!;
         public virtual DbSet<Match> Matches { get; set; } = null!;
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+                optionsBuilder.UseSqlServer(_connectionString);
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
