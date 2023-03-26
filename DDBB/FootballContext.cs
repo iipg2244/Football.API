@@ -7,7 +7,7 @@ namespace DDBB
     {
         private string _connectionString = "";
 
-        public FootballContext(string connectionString = null)
+        public FootballContext(string connectionString)
         {
             if (!string.IsNullOrEmpty(connectionString))
             {
