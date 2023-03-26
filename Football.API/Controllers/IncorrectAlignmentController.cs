@@ -1,5 +1,4 @@
-﻿using Football.API.Models;
-using Football.API.Services;
+﻿using Football.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using System;

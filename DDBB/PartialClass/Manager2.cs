@@ -1,4 +1,4 @@
-﻿namespace Football.API.Models
+﻿namespace DDBB
 {
     public partial class Manager
     {

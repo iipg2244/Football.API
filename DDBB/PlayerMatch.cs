@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Football.API.Models
+namespace DDBB
 {
     public abstract class PlayerMatch
     {

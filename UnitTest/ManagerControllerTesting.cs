@@ -1,12 +1,14 @@
 using Football.API;
 using Football.API.Controllers;
-using Football.API.Models;
+using DDBB;
 using Football.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using Xunit;
+using Football.API.Models.Others;
+using Microsoft.Extensions.Configuration;
 
 namespace TestUnit
 {
@@ -20,7 +22,7 @@ namespace TestUnit
         public ManagerControllerTesting()
         {
             _logger = new Logger<ManagerService>(MyLogger.LoggerFactory);
-            _footballContext = new FootballContext();
+            _footballContext = new FootballContext(Methods.GetConfigurationRoot().GetConnectionString("DefaultConnection"));
             _managerService = new ManagerService(_logger, _footballContext);
             _managerController = new ManagerController(_managerService);
         }

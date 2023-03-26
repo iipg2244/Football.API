@@ -1,16 +1,18 @@
-﻿using Football.API.Models;
-using Football.API.Models.Others;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace Football.API
+namespace DDBB
 {
     public partial class FootballContext : DbContext
     {
-        private readonly string _connectionString = Methods.GetConfigurationRoot().GetConnectionString("DefaultConnection");
+        private string _connectionString = "";
 
-        public FootballContext()
+        public FootballContext(string connectionString = null)
         {
+            if (!string.IsNullOrEmpty(connectionString))
+            {
+                _connectionString = connectionString;
+            }
         }
 
         public FootballContext(DbContextOptions<FootballContext> options)

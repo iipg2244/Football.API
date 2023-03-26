@@ -1,6 +1,6 @@
 using Football.API;
 using Football.API.Controllers;
-using Football.API.Models;
+using DDBB;
 using Football.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Query.Internal;
@@ -9,6 +9,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Xunit;
+using Football.API.Models.Others;
+using Microsoft.Extensions.Configuration;
 
 namespace TestUnit
 {
@@ -22,7 +24,7 @@ namespace TestUnit
         public StatisticsControllerTesting()
         {
             _logger = new Logger<StatisticsService>(MyLogger.LoggerFactory);
-            _footballContext = new FootballContext();
+            _footballContext = new FootballContext(Methods.GetConfigurationRoot().GetConnectionString("DefaultConnection"));
             _statisticsService = new StatisticsService(_logger, _footballContext);
             _statisticsController = new StatisticsController(_statisticsService);
         }

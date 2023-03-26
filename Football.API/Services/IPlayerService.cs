@@ -1,4 +1,4 @@
-﻿using Football.API.Models;
+﻿using DDBB;
 using System.Threading.Tasks;
 
 namespace Football.API.Services
