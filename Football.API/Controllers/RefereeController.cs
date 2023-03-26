@@ -18,7 +18,7 @@ namespace Football.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAsync()
         {
             return Ok(await _refereeService.GetAsync());
         }
