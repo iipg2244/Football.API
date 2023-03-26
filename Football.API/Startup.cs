@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.JSInterop;
 using Newtonsoft.Json.Serialization;
 
 namespace Football.API
@@ -40,6 +41,9 @@ namespace Football.API
             services.AddScoped<IPlayerService, PlayerService>();
             services.AddScoped<IRefereeService, RefereeService>();
             services.AddScoped<IMatchService, MatchService>();
+            services.AddScoped<IStatisticsService, StatisticsService>();
+            services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
+            services.AddHostedService<JobScheduledService>();
 
             services.AddMvc(options => options.SuppressAsyncSuffixInActionNames = false).AddNewtonsoftJson(options =>
             {
@@ -57,6 +61,9 @@ namespace Football.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseRouting();
 

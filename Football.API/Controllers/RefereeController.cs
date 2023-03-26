@@ -24,7 +24,7 @@ namespace Football.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetByIdAsync(int id)
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
             var response = await _refereeService.GetByIdAsync(id);
             if (response == null)
@@ -33,7 +33,7 @@ namespace Football.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostAsync([FromBody] Referee referee)
+        public async Task<IActionResult> PostAsync([FromBody] Referee referee)
         {
             var response = (Referee)(await _refereeService.PostAsync(referee));
             if (response == null)
@@ -42,7 +42,7 @@ namespace Football.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateAsync(int id, [FromBody] Referee referee)
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] Referee referee)
         {
             var response = (Referee)(await _refereeService.UpdateAsync(id, referee));
             if (response == null)
@@ -51,7 +51,7 @@ namespace Football.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteAsync(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
             return Ok(await _refereeService.DeleteAsync(id));
         }
