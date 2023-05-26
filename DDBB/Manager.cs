@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DDBB
 {
-    public partial class Manager :Person
+    public partial class Manager :Person, ICards
     {
         public Manager()
         {

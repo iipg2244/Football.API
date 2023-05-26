@@ -2,7 +2,7 @@
 
 namespace DDBB
 {
-    public partial class Player : Person
+    public partial class Player : Person, ICards, IMinutes
     {
         public Player()
         {

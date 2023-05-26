@@ -2,7 +2,7 @@
 
 namespace DDBB
 {
-    public partial class Referee : Person
+    public partial class Referee : Person, IMinutes
     {
         public Referee()
         {

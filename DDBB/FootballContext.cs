@@ -5,7 +5,11 @@ namespace DDBB
 {
     public partial class FootballContext : DbContext
     {
-        private string _connectionString = "";
+        private string _connectionString = "Server=192.168.1.250, 1433;User=isaac;Password=Maquina2244;Database=FootballDb;TrustServerCertificate=true;";
+
+        public FootballContext()
+        {
+        }
 
         public FootballContext(string connectionString)
         {
