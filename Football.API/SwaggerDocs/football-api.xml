@@ -1,0 +1,312 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Football.API</name>
+    </assembly>
+    <members>
+        <member name="M:Football.API.Controllers.v1.IncorrectAlignmentController.Get">
+            <summary>
+            Generate a background task.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <returns>Progress message.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.IncorrectAlignmentController.Post(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Find task ids.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="listId">List with ids of tasks.</param>
+            <returns>Not Implemented Exception.</returns>
+            <response code="501">Not Implemented.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.ManagerController.GetAsync">
+            <summary>
+            Gets list of managers.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <returns>List of managers.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.ManagerController.GetByIdAsync(System.Int32)">
+            <summary>
+            Get manager by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Manager identifier.</param>
+            <returns>If found, returns Manager otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.ManagerController.PostAsync(Football.Infrastructure.Manager)">
+            <summary>
+            Insert manager.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="manager">Manager to insert.</param>
+            <returns>If the insert is correct, returns Manager otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.ManagerController.UpdateAsync(System.Int32,Football.Infrastructure.Manager)">
+            <summary>
+            Update manager by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Manager identifier.</param>
+            <param name="manager">Manager with the changes to be made.</param>
+            <returns>If the update is correct, returns Manager otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.ManagerController.DeleteAsync(System.Int32)">
+            <summary>
+            Delete manager by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Manager identifier.</param>
+            <returns>If the delete is correct, returns true otherwise false.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.MatchController.GetAsync">
+            <summary>
+            Gets list of matchs.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <returns>List of matchs.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.MatchController.GetByIdAsync(System.Int32)">
+            <summary>
+            Get match by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Match identifier.</param>
+            <returns>If found, returns Match otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.MatchController.PostAsync(Football.Infrastructure.Match)">
+            <summary>
+            Insert match.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="match">Match to insert.</param>
+            <returns>If the insert is correct, returns Match otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.MatchController.UpdateAsync(System.Int32,Football.Infrastructure.Match)">
+            <summary>
+            Update match by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Match identifier.</param>
+            <param name="match">Match with the changes to be made.</param>
+            <returns>If the update is correct, returns Match otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.MatchController.DeleteAsync(System.Int32)">
+            <summary>
+            Delete match by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Match identifier.</param>
+            <returns>If the delete is correct, returns true otherwise false.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.PlayerController.GetAsync">
+            <summary>
+            Gets list of players.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <returns>List of players.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.PlayerController.GetByIdAsync(System.Int32)">
+            <summary>
+            Get player by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Player identifier.</param>
+            <returns>If found, returns Player otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.PlayerController.PostAsync(Football.Infrastructure.Player)">
+            <summary>
+            Insert player.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="player">Player to insert.</param>
+            <returns>If the insert is correct, returns Player otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.PlayerController.UpdateAsync(System.Int32,Football.Infrastructure.Player)">
+            <summary>
+            Update player by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Player identifier.</param>
+            <param name="player">Player with the changes to be made.</param>
+            <returns>If the update is correct, returns Player otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.PlayerController.DeleteAsync(System.Int32)">
+            <summary>
+            Delete player by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Player identifier.</param>
+            <returns>If the delete is correct, returns true otherwise false.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.RefereeController.GetAsync">
+            <summary>
+            Gets list of referees.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <returns>List of referees.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.RefereeController.GetByIdAsync(System.Int32)">
+            <summary>
+            Get referee by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Referee identifier.</param>
+            <returns>If found, returns Referee otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.RefereeController.PostAsync(Football.Infrastructure.Referee)">
+            <summary>
+            Insert referee.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="referee">Referee to insert.</param>
+            <returns>If the insert is correct, returns Referee otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.RefereeController.UpdateAsync(System.Int32,Football.Infrastructure.Referee)">
+            <summary>
+            Update referee by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Referee identifier.</param>
+            <param name="referee">Referee with the changes to be made.</param>
+            <returns>If the update is correct, returns Referee otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.RefereeController.DeleteAsync(System.Int32)">
+            <summary>
+            Delete referee by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Referee identifier.</param>
+            <returns>If the delete is correct, returns true otherwise false.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.StatisticsController.GetYellowCardsAsync">
+            <summary>
+            Returns the entire list of of people who have participated in matches and have yellow cards.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <returns>List of statistics.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.StatisticsController.GetRedCardsAsync">
+            <summary>
+            Returns the entire list of of people who have participated in matches and have red cards.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <returns>List of statistics.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.StatisticsController.GetMinutesPlayedAsync">
+            <summary>
+            Returns the entire list of of people who have participated in matches and have minutes played.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <returns>List of statistics.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v2.IncorrectAlignmentController.Get">
+            <summary>
+            Generate a background task.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <returns>Not Implemented Exception.</returns>
+            <response code="501">Not Implemented.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v2.IncorrectAlignmentController.Post(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Find task ids.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="listId">List with ids of tasks.</param>
+            <returns>Not Implemented Exception.</returns>
+            <response code="501">Not Implemented.</response>
+        </member>
+    </members>
+</doc>
