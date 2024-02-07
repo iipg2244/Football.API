@@ -1,0 +1,28 @@
+{
+    "profiles": {
+        "Football.API": {
+            "commandName": "Project",
+            "launchBrowser": true,
+            "launchUrl": "swagger",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "applicationUrl": "https://localhost:44367;http://localhost:8080"
+        },
+        "Docker": {
+            "commandName": "Docker",
+            "launchBrowser": true,
+            "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "https://+:44367;http://+:8080",
+                "ASPNETCORE_HTTPS_PORT": "44367",
+                "ASPNETCORE_HTTP_PORT": "8080"
+            },
+            "publishAllPorts": true,
+            "httpPort": 8080,
+            "useSSL": true,
+            "sslPort": 44367
+        }
+    }
+}
