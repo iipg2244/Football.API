@@ -7,8 +7,8 @@ namespace Football.API.Services
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Logging;
     using Football.Domain.Interfaces;
-    using Football.API.Extensions;
     using Football.Infrastructure;
+    using Football.Infrastructure.Extensions;
 
     public class RefereeService : IRefereeService
     {

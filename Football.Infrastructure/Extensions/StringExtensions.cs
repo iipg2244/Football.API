@@ -1,4 +1,4 @@
-namespace Football.API.Extensions
+namespace Football.Infrastructure.Extensions
 {
     using System;
 

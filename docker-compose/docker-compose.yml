@@ -33,9 +33,9 @@ services:
       - "1433:1433"
     networks:
       - ApplicationNetwork
-  eslastic01:
+  elastic01:
     image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
-    container_name: "eslastic"
+    container_name: "elastic"
     environment:
       - node.name=es01
       - cluster.name=es-docker-cluster
@@ -60,7 +60,7 @@ services:
     ports:
       - "5600-5601:5601"
     depends_on:
-      - eslastic01
+      - elastic01
     environment:
       - ELASTICSEARCH_HOSTS=http://es01:9200
       - XPACK_MONITORING_ENABLED=true
