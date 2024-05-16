@@ -6,7 +6,7 @@ namespace Football.API.Services
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Logging;
-    using Football.API.DTOs;
+    using Football.API.Dtos;
     using Football.Domain.Interfaces;
     using Football.Infrastructure;
 
