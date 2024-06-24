@@ -1,4 +1,4 @@
-namespace Football.API.Services
+namespace Football.Application.Services
 {
     using System.Collections.Concurrent;
     using System.Threading.Tasks;

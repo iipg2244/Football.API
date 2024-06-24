@@ -4,7 +4,7 @@ namespace Football.API
     using System.Linq;
     using Football.Infrastructure;
     using Football.Domain.Interfaces;
-    using Football.API.Services;
+    using Football.Application.Services;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;

@@ -1,4 +1,4 @@
-namespace Football.API.Services
+namespace Football.Application.Services
 {
     using Football.Infrastructure;
     using System.Collections.Generic;

@@ -1,6 +1,4 @@
-
-
-namespace Football.API.Services
+namespace Football.Application.Services
 {
     using System.Threading.Tasks;
     using System.Threading;

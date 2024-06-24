@@ -1,6 +1,6 @@
 namespace Football.API.Controllers.v1
 {
-    using Football.API.Dtos;
+    using Football.Application.Dtos;
     using Football.Domain.Interfaces;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;

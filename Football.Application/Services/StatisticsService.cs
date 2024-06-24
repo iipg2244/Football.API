@@ -1,4 +1,4 @@
-namespace Football.API.Services
+namespace Football.Application.Services
 {
     using System.Collections.Generic;
     using System;
@@ -6,7 +6,7 @@ namespace Football.API.Services
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Logging;
-    using Football.API.Dtos;
+    using Football.Application.Dtos;
     using Football.Domain.Interfaces;
     using Football.Infrastructure;
 

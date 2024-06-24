@@ -1,4 +1,4 @@
-namespace Football.API.Dtos
+namespace Football.Application.Dtos
 {
     using System.Diagnostics.CodeAnalysis;
 
