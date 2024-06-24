@@ -1,13 +1,13 @@
 namespace Football.API.Tests.Controllers.v1
 {
     using Football.API.Controllers.v1;
-    using Football.Infrastructure;
     using Football.Domain.Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using Xunit;
     using Moq;
     using System.Threading.Tasks;
+    using Football.Domain.Entities.Football;
 
     public class RefereeControllerTest
     {
@@ -18,7 +18,7 @@ namespace Football.API.Tests.Controllers.v1
             Id = 0,
             Name = "test 1",
             MinutesPlayed = 0,
-            Matches = new List<Infrastructure.Match>()
+            Matches = new List<Domain.Entities.Football.Match>()
         };
 
         public RefereeControllerTest() => _refereeController = new RefereeController(_refereeService.Object);

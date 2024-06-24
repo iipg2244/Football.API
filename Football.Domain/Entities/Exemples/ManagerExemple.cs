@@ -1,7 +1,6 @@
 namespace Football.Domain.Entities.Exemples
 {
-    using System.Collections.Generic;
-    using Football.Infrastructure;
+    using global::Football.Domain.Entities.Football;
 
     public class ManagerExemple : Person, ICards
     {

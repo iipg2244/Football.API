@@ -1,6 +1,6 @@
 namespace Football.Domain.Entities.Exemples
 {
-    using Football.Infrastructure;
+    using global::Football.Domain.Entities.Football;
 
     public class RefereeExemple : Person, IMinutes
     {

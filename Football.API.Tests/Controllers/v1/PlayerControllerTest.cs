@@ -1,13 +1,13 @@
 namespace Football.API.Tests.Controllers.v1
 {
     using Football.API.Controllers.v1;
-    using Football.Infrastructure;
     using Football.Domain.Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using Xunit;
     using Moq;
     using System.Threading.Tasks;
+    using Football.Domain.Entities.Football;
 
     public class PlayerControllerTest
     {

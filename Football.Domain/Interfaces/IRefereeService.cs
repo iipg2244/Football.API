@@ -1,6 +1,6 @@
 namespace Football.Domain.Interfaces
 {
-    using Football.Infrastructure;
+    using Football.Domain.Entities.Football;
     using System.Threading.Tasks;
 
     public interface IRefereeService

@@ -1,6 +1,5 @@
 namespace Football.API.Controllers.v1
 {
-    using Football.Infrastructure;
     using Football.Domain.Interfaces;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -9,6 +8,7 @@ namespace Football.API.Controllers.v1
     using System.ComponentModel.DataAnnotations;
     using System.Threading.Tasks;
     using Football.Domain.Entities.Exemples;
+    using Football.Domain.Entities.Football;
 
     [ApiController]
     [ApiVersion("1.0")]

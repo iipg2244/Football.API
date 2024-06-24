@@ -8,7 +8,8 @@ namespace Football.API.Services
     using Microsoft.Extensions.Logging;
     using Football.Domain.Interfaces;
     using Football.Infrastructure;
-    using Football.Infrastructure.Extensions;
+    using Football.Domain.Entities.Football;
+    using Football.Domain.Extensions;
 
     public class RefereeService : IRefereeService
     {
@@ -39,7 +40,7 @@ namespace Football.API.Services
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.ToString());
+                _logger.LogInformation(e, e.ToString());
             }
             return new List<Referee>();
         }
@@ -62,7 +63,7 @@ namespace Football.API.Services
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.ToString());
+                _logger.LogInformation(e, e.ToString());
             }
             return null;
         }
@@ -89,7 +90,7 @@ namespace Football.API.Services
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.ToString());
+                _logger.LogInformation(e, e.ToString());
             }
             return null;
         }
@@ -122,7 +123,7 @@ namespace Football.API.Services
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.ToString());
+                _logger.LogInformation(e, e.ToString());
             }
             return null;
         }
@@ -151,7 +152,7 @@ namespace Football.API.Services
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.ToString());
+                _logger.LogInformation(e, e.ToString());
             }
             return false;
         }

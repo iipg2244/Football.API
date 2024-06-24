@@ -1,13 +1,13 @@
-namespace Football.Infrastructure
+namespace Football.Domain.Entities.Football
 {
-    public partial class Player
+    public partial class Manager
     {
 #pragma warning disable S3400 // Methods should not return constants
-        public bool ShouldSerializeMatchesAway() => false;
+        public bool ShouldSerializeHouseMatches() => false;
 #pragma warning restore S3400 // Methods should not return constants
 
 #pragma warning disable S3400 // Methods should not return constants
-        public bool ShouldSerializeMatchesHouse() => false;
+        public bool ShouldSerializeAwayMatches() => false;
 #pragma warning restore S3400 // Methods should not return constants
     }
 }

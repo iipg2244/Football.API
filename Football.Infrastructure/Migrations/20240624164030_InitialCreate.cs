@@ -1,7 +1,7 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
 namespace Football.Infrastructure.Migrations
 {
-    using Microsoft.EntityFrameworkCore.Migrations;
-
     public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

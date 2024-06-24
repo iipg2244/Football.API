@@ -1,5 +1,6 @@
 namespace Football.API
 {
+    using Football.Domain.Entities.Football;
     using Football.Infrastructure;
     using System;
     using System.Collections.Generic;

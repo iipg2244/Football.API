@@ -1,6 +1,6 @@
 namespace Football.Domain.Entities.Exemples
 {
-    using Football.Infrastructure;
+    using global::Football.Domain.Entities.Football;
 
     public class PlayerExemple : Person, ICards, IMinutes
     {

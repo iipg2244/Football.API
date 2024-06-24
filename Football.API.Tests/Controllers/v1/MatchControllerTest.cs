@@ -1,19 +1,19 @@
 namespace Football.API.Tests.Controllers.v1
 {
     using Football.API.Controllers.v1;
-    using Football.Infrastructure;
     using Football.Domain.Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using Xunit;
     using Moq;
     using System.Threading.Tasks;
+    using Football.Domain.Entities.Football;
 
     public class MatchControllerTest
     {
         private readonly Mock<IMatchService> _matchService = new Mock<IMatchService>();
         private MatchController _matchController;
-        private readonly Infrastructure.Match MatchTmp = new Infrastructure.Match()
+        private readonly Domain.Entities.Football.Match MatchTmp = new Domain.Entities.Football.Match()
         {
             Id = 0,
             HouseManagerId = 1,
@@ -39,7 +39,7 @@ namespace Football.API.Tests.Controllers.v1
             {
                 Id = 3,
                 Name = "test 3",
-                Matches = new List<Infrastructure.Match>(),
+                Matches = new List<Domain.Entities.Football.Match>(),
                 MinutesPlayed = 90
             }
         };
@@ -65,7 +65,7 @@ namespace Football.API.Tests.Controllers.v1
             {
                 await Task.Delay(500);
                 MatchTmp.Id = 1;
-                return new List<Infrastructure.Match>() { MatchTmp };
+                return new List<Domain.Entities.Football.Match>() { MatchTmp };
             });
             _matchController = new MatchController(_matchService.Object);
             
@@ -73,7 +73,7 @@ namespace Football.API.Tests.Controllers.v1
             var result = (OkObjectResult)await _matchController.GetAsync();
 
             // Assert
-            var Matchs = Assert.IsType<List<Infrastructure.Match>>(result?.Value);
+            var Matchs = Assert.IsType<List<Domain.Entities.Football.Match>>(result?.Value);
             Assert.True(Matchs?.Count > 0);
         }
 
@@ -116,7 +116,7 @@ namespace Football.API.Tests.Controllers.v1
             var result = (OkObjectResult)await _matchController.GetByIdAsync(id);
 
             // Assert
-            var Match = Assert.IsType<Infrastructure.Match>(result?.Value);
+            var Match = Assert.IsType<Domain.Entities.Football.Match>(result?.Value);
             Assert.NotNull(Match);
             Assert.Equal(Match.Id, id);
         }
@@ -139,7 +139,7 @@ namespace Football.API.Tests.Controllers.v1
         {
             // Arrange
             MatchTmp.Id = 0;
-            _matchService.Setup(x => x.PostAsync(It.IsAny<Infrastructure.Match>())).Returns(async () =>
+            _matchService.Setup(x => x.PostAsync(It.IsAny<Domain.Entities.Football.Match>())).Returns(async () =>
             {
                 await Task.Delay(500);
                 MatchTmp.Id = 1;
@@ -150,7 +150,7 @@ namespace Football.API.Tests.Controllers.v1
             // Act & Assert
             var result = Assert.IsType<CreatedAtActionResult>(await _matchController.PostAsync(MatchTmp));
             Assert.NotNull(result.Value);
-            Assert.IsType<Infrastructure.Match>(result.Value);
+            Assert.IsType<Domain.Entities.Football.Match>(result.Value);
         }
 
         [Fact]
@@ -159,7 +159,7 @@ namespace Football.API.Tests.Controllers.v1
             // Arrange
             int id = 1;
             MatchTmp.Id = id;
-            _matchService.Setup(x => x.UpdateAsync(It.IsAny<int>(), It.IsAny<Infrastructure.Match>()))
+            _matchService.Setup(x => x.UpdateAsync(It.IsAny<int>(), It.IsAny<Domain.Entities.Football.Match>()))
             .Returns(async () =>
             {
                 await Task.Delay(500);
@@ -171,7 +171,7 @@ namespace Football.API.Tests.Controllers.v1
             // Act & Assert
             var result = Assert.IsType<CreatedAtActionResult>(await _matchController.UpdateAsync(id, MatchTmp));
             Assert.NotNull(result.Value);
-            Assert.IsType<Infrastructure.Match>(result.Value);
+            Assert.IsType<Domain.Entities.Football.Match>(result.Value);
         }
 
         [Fact]
@@ -180,7 +180,7 @@ namespace Football.API.Tests.Controllers.v1
             // Arrange
             int id = -1;
             MatchTmp.Id = id;
-            _matchService.Setup(x => x.UpdateAsync(It.IsAny<int>(), It.IsAny<Infrastructure.Match>()))
+            _matchService.Setup(x => x.UpdateAsync(It.IsAny<int>(), It.IsAny<Domain.Entities.Football.Match>()))
             .Returns(async () =>
             {
                 await Task.Delay(500);

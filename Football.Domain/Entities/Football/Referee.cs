@@ -1,4 +1,4 @@
-namespace Football.Infrastructure
+namespace Football.Domain.Entities.Football
 {
     using System.Collections.Generic;
 

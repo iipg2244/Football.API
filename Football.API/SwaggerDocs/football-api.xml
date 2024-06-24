@@ -47,7 +47,7 @@
             <response code="200">Ok.</response>
             <response code="404">Not found.</response>
         </member>
-        <member name="M:Football.API.Controllers.v1.ManagerController.PostAsync(Football.Infrastructure.Manager)">
+        <member name="M:Football.API.Controllers.v1.ManagerController.PostAsync(Football.Domain.Entities.Football.Manager)">
             <summary>
             Insert manager.
             </summary>
@@ -59,7 +59,7 @@
             <response code="200">Ok.</response>
             <response code="404">Not found.</response>
         </member>
-        <member name="M:Football.API.Controllers.v1.ManagerController.UpdateAsync(System.Int32,Football.Infrastructure.Manager)">
+        <member name="M:Football.API.Controllers.v1.ManagerController.UpdateAsync(System.Int32,Football.Domain.Entities.Football.Manager)">
             <summary>
             Update manager by id.
             </summary>
@@ -105,7 +105,7 @@
             <response code="200">Ok.</response>
             <response code="404">Not found.</response>
         </member>
-        <member name="M:Football.API.Controllers.v1.MatchController.PostAsync(Football.Infrastructure.Match)">
+        <member name="M:Football.API.Controllers.v1.MatchController.PostAsync(Football.Domain.Entities.Football.Match)">
             <summary>
             Insert match.
             </summary>
@@ -117,7 +117,7 @@
             <response code="200">Ok.</response>
             <response code="404">Not found.</response>
         </member>
-        <member name="M:Football.API.Controllers.v1.MatchController.UpdateAsync(System.Int32,Football.Infrastructure.Match)">
+        <member name="M:Football.API.Controllers.v1.MatchController.UpdateAsync(System.Int32,Football.Domain.Entities.Football.Match)">
             <summary>
             Update match by id.
             </summary>
@@ -163,7 +163,7 @@
             <response code="200">Ok.</response>
             <response code="404">Not found.</response>
         </member>
-        <member name="M:Football.API.Controllers.v1.PlayerController.PostAsync(Football.Infrastructure.Player)">
+        <member name="M:Football.API.Controllers.v1.PlayerController.PostAsync(Football.Domain.Entities.Football.Player)">
             <summary>
             Insert player.
             </summary>
@@ -175,7 +175,7 @@
             <response code="200">Ok.</response>
             <response code="404">Not found.</response>
         </member>
-        <member name="M:Football.API.Controllers.v1.PlayerController.UpdateAsync(System.Int32,Football.Infrastructure.Player)">
+        <member name="M:Football.API.Controllers.v1.PlayerController.UpdateAsync(System.Int32,Football.Domain.Entities.Football.Player)">
             <summary>
             Update player by id.
             </summary>
@@ -221,7 +221,7 @@
             <response code="200">Ok.</response>
             <response code="404">Not found.</response>
         </member>
-        <member name="M:Football.API.Controllers.v1.RefereeController.PostAsync(Football.Infrastructure.Referee)">
+        <member name="M:Football.API.Controllers.v1.RefereeController.PostAsync(Football.Domain.Entities.Football.Referee)">
             <summary>
             Insert referee.
             </summary>
@@ -233,7 +233,7 @@
             <response code="200">Ok.</response>
             <response code="404">Not found.</response>
         </member>
-        <member name="M:Football.API.Controllers.v1.RefereeController.UpdateAsync(System.Int32,Football.Infrastructure.Referee)">
+        <member name="M:Football.API.Controllers.v1.RefereeController.UpdateAsync(System.Int32,Football.Domain.Entities.Football.Referee)">
             <summary>
             Update referee by id.
             </summary>

@@ -8,6 +8,7 @@ namespace Football.API.Services
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Logging;
     using Football.Domain.Interfaces;
+    using Football.Domain.Entities.Football;
 
     public class MatchService : IMatchService
     {
@@ -49,7 +50,7 @@ namespace Football.API.Services
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.ToString());
+                _logger.LogInformation(e, e.ToString());
             }
             return new List<Match>();
         }
@@ -76,7 +77,7 @@ namespace Football.API.Services
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.ToString());
+                _logger.LogInformation(e, e.ToString());
             }
             return null;
         }
@@ -126,7 +127,7 @@ namespace Football.API.Services
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.ToString());
+                _logger.LogInformation(e, e.ToString());
             }
             return null;
         }
@@ -219,7 +220,7 @@ namespace Football.API.Services
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.ToString());
+                _logger.LogInformation(e, e.ToString());
             }
             return null;
         }
@@ -248,7 +249,7 @@ namespace Football.API.Services
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.ToString());
+                _logger.LogInformation(e, e.ToString());
             }
             return false;
         }
