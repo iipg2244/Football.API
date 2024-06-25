@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Football.API\Football.API.csproj" />
+    <ProjectReference Include="..\..\src\Football.API\Football.API.csproj" />
   </ItemGroup>
 
 </Project>
