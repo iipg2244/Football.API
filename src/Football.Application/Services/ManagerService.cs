@@ -4,23 +4,16 @@ namespace Football.Application.Services
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Logging;
     using Football.Domain.Contracts;
-    using Football.Infrastructure;
     using Football.Domain.Entities.Football;
     using Football.Domain.Extensions;
 
     public class ManagerService : IManagerService
     {
-        private readonly ILogger<ManagerService> _logger;
-        private readonly FootballContext _footballContext;
+        private readonly IManagerRepository _managerRepository;
 
-        public ManagerService(ILogger<ManagerService> logger, FootballContext footballContext)
-        {
-            _logger = logger;
-            _footballContext = footballContext;
-        }
+        public ManagerService(IManagerRepository managerRepository) => _managerRepository = managerRepository;
 
         //
         // Summary:
@@ -28,22 +21,7 @@ namespace Football.Application.Services
         //
         // Returns:
         //     A List<Manager>.
-        public async Task<object> GetAsync()
-        {
-            try
-            {
-                var managers = await _footballContext.Managers.OrderBy(x => x.Name).ToListAsync();
-                if (managers != null)
-                {
-                    return managers;
-                }
-            }
-            catch (Exception e)
-            {
-                _logger.LogInformation(e, e.ToString());
-            }
-            return new List<Manager>();
-        }
+        public async Task<IEnumerable<ManagerFootball>> GetManagersAsync() => await _managerRepository.GetAsync();
 
         //
         // Summary:
@@ -55,18 +33,7 @@ namespace Football.Application.Services
         //
         // Returns:
         //     A Manager or null if not found or there is an error.
-        public async Task<object> GetByIdAsync(int id)
-        {
-            try
-            {
-                return await _footballContext.Managers.FindAsync(id);
-            }
-            catch (Exception e)
-            {
-                _logger.LogInformation(e, e.ToString());
-            }
-            return null;
-        }
+        public async Task<ManagerFootball> GetManagerByIdAsync(int id) => await _managerRepository.GetByIdAsync(id);
 
         //
         // Summary:
@@ -78,22 +45,7 @@ namespace Football.Application.Services
         //
         // Returns:
         //     The added manager or null if there is an error.
-        public async Task<object> PostAsync(Manager manager)
-        {
-            try
-            {
-                manager.Id = 0;
-                manager.Name = manager.Name.Left(100);
-                await _footballContext.Managers.AddAsync(manager);
-                await _footballContext.SaveChangesAsync();
-                return manager;
-            }
-            catch (Exception e)
-            {
-                _logger.LogInformation(e, e.ToString());
-            }
-            return null;
-        }
+        public async Task<ManagerFootball> CreateManagerAsync(ManagerFootball manager) => await _managerRepository.CreateAsync(manager);
 
         //
         // Summary:
@@ -108,26 +60,7 @@ namespace Football.Application.Services
         //
         // Returns:
         //     The updated manager or null if there is an error.
-        public async Task<object> UpdateAsync(int id, Manager manager)
-        {
-            try
-            {
-                var managerTmp = await _footballContext.Managers.FindAsync(id);
-                if (managerTmp != null)
-                {
-                    managerTmp.Name = manager.Name.Left(100);
-                    managerTmp.YellowCard = manager.YellowCard;
-                    managerTmp.RedCard = manager.RedCard;
-                    await _footballContext.SaveChangesAsync();
-                    return managerTmp;
-                }
-            }
-            catch (Exception e)
-            {
-                _logger.LogInformation(e, e.ToString());
-            }
-            return null;
-        }
+        public async Task<ManagerFootball> UpdateManagerAsync(int id, ManagerFootball manager) => await _managerRepository.UpdateAsync(id, manager);
 
         //
         // Summary:
@@ -139,28 +72,10 @@ namespace Football.Application.Services
         //
         // Returns:
         //     true is all ok or false if not found or there is an error.
-        public async Task<object> DeleteAsync(int id)
-        {
-            try
-            {
-                var managerTmp = await _footballContext.Managers.FindAsync(id);
-                if (managerTmp != null)
-                {
-                    _footballContext.Managers.Remove(managerTmp);
-                    await _footballContext.SaveChangesAsync();
-                    return true;
-                }
-            }
-            catch (Exception e)
-            {
-                _logger.LogInformation(e, e.ToString());
-            }
-            return false;
-        }
+        public async Task<bool> DeleteManagerAsync(int id) => await _managerRepository.DeleteAsync(id);
 
         ~ManagerService()
         {
-            _footballContext.Dispose();
         }
     }
 }

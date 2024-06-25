@@ -1,14 +1,15 @@
 namespace Football.Domain.Contracts
 {
     using Football.Domain.Entities.Football;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public interface IManagerService
     {
-        Task<object> GetAsync();
-        Task<object> GetByIdAsync(int id);
-        Task<object> PostAsync(Manager manager);
-        Task<object> UpdateAsync(int id, Manager manager);
-        Task<object> DeleteAsync(int id);
+        Task<IEnumerable<ManagerFootball>> GetManagersAsync();
+        Task<ManagerFootball> GetManagerByIdAsync(int id);
+        Task<ManagerFootball> CreateManagerAsync(ManagerFootball manager);
+        Task<ManagerFootball> UpdateManagerAsync(int id, ManagerFootball manager);
+        Task<bool> DeleteManagerAsync(int id);
     }
 }

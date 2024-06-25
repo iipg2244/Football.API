@@ -9,6 +9,7 @@ namespace Football.API.Controllers.v1
     using System.Threading.Tasks;
     using Football.Domain.Entities.Exemples;
     using Football.Domain.Entities.Football;
+    using AutoMapper;
 
     [ApiController]
     [ApiVersion("1.0")]
@@ -16,8 +17,12 @@ namespace Football.API.Controllers.v1
     public class ManagerController : ControllerBase
     {
         private readonly IManagerService _managerService;
+        private readonly IMapper _mapper;
 
-        public ManagerController(IManagerService managerService) => _managerService = managerService;
+        public ManagerController(IManagerService managerService, IMapper mapper) {
+            _managerService = managerService;
+            _mapper = mapper;
+        }
 
         /// <summary>
         /// Gets list of managers.
@@ -29,8 +34,8 @@ namespace Football.API.Controllers.v1
         /// <response code="200">Ok.</response>
         [HttpGet]
         [Produces("application/json")]
-        [ProducesResponseType(typeof(List<ManagerExemple>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAsync() => Ok(await _managerService.GetAsync());
+        [ProducesResponseType(typeof(IEnumerable<ManagerFootball>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetManagersAsync() => Ok(await _managerService.GetManagersAsync());
 
         /// <summary>
         /// Get manager by id.
@@ -44,14 +49,14 @@ namespace Football.API.Controllers.v1
         /// <response code="404">Not found.</response>
         [HttpGet("options")]
         [Produces("application/json")]
-        [ProducesResponseType(typeof(ManagerExemple), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ManagerFootballExemple), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetByIdAsync([FromHeader][Required] int id)
+        public async Task<IActionResult> GetManagerByIdAsync([FromHeader][Required] int id)
         {
-            var response = await _managerService.GetByIdAsync(id);
+            var response = await _managerService.GetManagerByIdAsync(id);
             if (response == null)
                 return NotFound();
-            return Ok(response);
+            return Ok(_mapper.Map<ManagerFootballExemple>(response));
         }
 
         /// <summary>
@@ -67,14 +72,14 @@ namespace Football.API.Controllers.v1
         [HttpPost("options")]
         [Consumes("application/json")]
         [Produces("application/json")]
-        [ProducesResponseType(typeof(ManagerExemple), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ManagerFootball), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> PostAsync([FromHeader][Required] Manager manager)
+        public async Task<IActionResult> CreateManagerAsync([FromBody][Required] ManagerFootballExemple manager)
         {
-           var response = (Manager)(await _managerService.PostAsync(manager));
+           var response = await _managerService.CreateManagerAsync(_mapper.Map<ManagerFootball>(manager));
             if (response == null)
                 return NotFound();
-            return CreatedAtAction(nameof(GetByIdAsync), new { id = response.Id }, response);
+            return Ok(response);
         }
 
         /// <summary>
@@ -91,14 +96,14 @@ namespace Football.API.Controllers.v1
         [HttpPut("options")]
         [Consumes("application/json")]
         [Produces("application/json")]
-        [ProducesResponseType(typeof(ManagerExemple), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ManagerFootballExemple), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> UpdateAsync([FromHeader][Required] int id,[FromBody][Required] Manager manager)
+        public async Task<IActionResult> UpdateManagerAsync([FromHeader][Required] int id,[FromBody][Required] ManagerFootballExemple manager)
         {
-            var response = (Manager)(await _managerService.UpdateAsync(id, manager));
+            var response = await _managerService.UpdateManagerAsync(id, _mapper.Map<ManagerFootball>(manager));
             if (response == null)
                 return NotFound();
-            return CreatedAtAction(nameof(GetByIdAsync), new { id = response.Id }, response);
+            return Ok(_mapper.Map<ManagerFootballExemple>(response));
         }
 
         /// <summary>
@@ -113,6 +118,6 @@ namespace Football.API.Controllers.v1
         [HttpDelete("options")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
-        public async Task<IActionResult> DeleteAsync([FromHeader][Required] int id) => Ok(await _managerService.DeleteAsync(id));
+        public async Task<IActionResult> DeleteManagerAsync([FromHeader][Required] int id) => Ok(await _managerService.DeleteManagerAsync(id));
     }
 }

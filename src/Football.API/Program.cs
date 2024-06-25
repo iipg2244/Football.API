@@ -11,6 +11,7 @@ namespace Football.API
     using System.Threading.Tasks;
     using Microsoft.Extensions.Configuration;
     using Football.Domain.Shared;
+    using Football.Infrastructure.Mappings;
 
     public class Program
     {

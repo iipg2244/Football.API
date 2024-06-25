@@ -25,7 +25,9 @@ services:
       - ApplicationNetwork
   db:
     container_name: "sqlserver" 
-    build: "./sqlserver"
+    build: 
+      context: "./sqlserver"
+      dockerfile: "./Dockerfile"
     volumes:
       - mssqlsystem-data:/var/opt/mssql
       - mssqluser-data:/var/opt/sqlserver
@@ -51,7 +53,7 @@ services:
     volumes:
       - data01:/usr/share/elasticsearch/data
     ports:
-      - 9200:9200
+      - "9200:9200"
     networks:
       - ApplicationNetwork
   kibana:

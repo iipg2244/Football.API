@@ -15,6 +15,8 @@ namespace Football.API
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
     using Newtonsoft.Json.Serialization;
+    using Football.Infrastructure.Repositories;
+    using Football.Infrastructure.Mappings;
 
     public class Startup
     {
@@ -39,11 +41,14 @@ namespace Football.API
 
             services.AddDbContext<FootballContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddAutoMapper(typeof(MappingInfrastructureProfile));
+            services.AddAutoMapper(typeof(MappingDomainProfile));
+            services.AddScoped<IManagerRepository, ManagerRepository>();
             services.AddScoped<IManagerService, ManagerService>();
-            services.AddScoped<IPlayerService, PlayerService>();
-            services.AddScoped<IRefereeService, RefereeService>();
-            services.AddScoped<IMatchService, MatchService>();
-            services.AddScoped<IStatisticsService, StatisticsService>();
+            //services.AddScoped<IPlayerService, PlayerService>();
+            //services.AddScoped<IRefereeService, RefereeService>();
+            //services.AddScoped<IMatchService, MatchService>();
+            //services.AddScoped<IStatisticsService, StatisticsService>();
             services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
             services.AddHostedService<JobScheduledService>();
 
@@ -51,7 +56,7 @@ namespace Football.API
             {
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
-                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
             });
 

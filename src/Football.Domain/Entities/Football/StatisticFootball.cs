@@ -1,9 +1,9 @@
-namespace Football.Application.Dtos
+namespace Football.Domain.Entities.Football
 {
     using System.Diagnostics.CodeAnalysis;
 
     [ExcludeFromCodeCoverage]
-    public class StatisticDto
+    public class StatisticFootball
     {
         public int Id { get; set; } = 0;
 
@@ -13,7 +13,7 @@ namespace Football.Application.Dtos
 
         public int Total { get; set; } = 0;
 
-        public StatisticDto()
+        public StatisticFootball()
         {
         }
     }

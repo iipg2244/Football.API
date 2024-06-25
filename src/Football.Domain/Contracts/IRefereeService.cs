@@ -1,14 +1,15 @@
 namespace Football.Domain.Contracts
 {
     using Football.Domain.Entities.Football;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public interface IRefereeService
     {
-        Task<object> GetAsync();
-        Task<object> GetByIdAsync(int id);
-        Task<object> PostAsync(Referee referee);
-        Task<object> UpdateAsync(int id, Referee referee);
-        Task<object> DeleteAsync(int id);
+        Task<IEnumerable<RefereeFootball>> GetRefereesAsync();
+        Task<RefereeFootball> GetRefereeByIdAsync(int id);
+        Task<RefereeFootball> CreateRefereeAsync(RefereeFootball referee);
+        Task<RefereeFootball> UpdateRefereeAsync(int id, RefereeFootball referee);
+        Task<bool> DeleteRefereeAsync(int id);
     }
 }

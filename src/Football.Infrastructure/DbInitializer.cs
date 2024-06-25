@@ -1,7 +1,6 @@
-namespace Football.API
+namespace Football.Infrastructure
 {
-    using Football.Domain.Entities.Football;
-    using Football.Infrastructure;
+    using Football.Infrastructure.Entities;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -121,9 +120,9 @@ namespace Football.API
                     context.PlayerHouses.AddRange(playerhouses);
                     context.PlayerAways.AddRange(playeraways);
                     context.SaveChanges();
-                }    
+                }
             }
-         
+
         }
     }
 }

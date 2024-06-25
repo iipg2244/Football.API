@@ -1,14 +1,15 @@
 namespace Football.Domain.Contracts
 {
     using Football.Domain.Entities.Football;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public interface IMatchService
     {
-        Task<object> GetAsync();
-        Task<object> GetByIdAsync(int id);
-        Task<object> PostAsync(Match match);
-        Task<object> UpdateAsync(int id, Match match);
-        Task<object> DeleteAsync(int id);
+        Task<IEnumerable<MatchFootball>> GetMatchesAsync();
+        Task<MatchFootball> GetMatchByIdAsync(int id);
+        Task<MatchFootball> CreateMatchAsync(MatchFootball match);
+        Task<MatchFootball> UpdateMatchAsync(int id, MatchFootball match);
+        Task<bool> DeleteMatchAsync(int id);
     }
 }

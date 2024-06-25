@@ -6,9 +6,9 @@ namespace Football.Domain.Contracts
 
     public interface IManagerRepository
     {
-        Task<List<ManagerFootball>> GetAsync();
+        Task<IEnumerable<ManagerFootball>> GetAsync();
         Task<ManagerFootball> GetByIdAsync(int id);
-        Task<ManagerFootball> PostAsync(ManagerFootball manager);
+        Task<ManagerFootball> CreateAsync(ManagerFootball manager);
         Task<ManagerFootball> UpdateAsync(int id, ManagerFootball manager);
         Task<bool> DeleteAsync(int id);
     }

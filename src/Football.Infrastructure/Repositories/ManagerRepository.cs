@@ -11,16 +11,22 @@ namespace Football.Infrastructure.Repositories
     using Football.Domain.Entities.Football;
     using Football.Domain.Extensions;
     using Football.Infrastructure.Entities;
+    using AutoMapper;
 
     public class ManagerRepository : IManagerRepository
     {
         private readonly ILogger<ManagerRepository> _logger;
         private readonly FootballContext _footballContext;
+        private readonly IMapper _mapper;
 
-        public ManagerRepository(ILogger<ManagerRepository> logger, FootballContext footballContext)
+        public ManagerRepository(
+            ILogger<ManagerRepository> logger, 
+            FootballContext footballContext,
+            IMapper mapper)
         {
             _logger = logger;
             _footballContext = footballContext;
+            _mapper = mapper;
         }
 
         //
@@ -29,21 +35,21 @@ namespace Football.Infrastructure.Repositories
         //
         // Returns:
         //     A List<Manager>.
-        public async Task<List<Manager>> GetAsync()
+        public async Task<IEnumerable<ManagerFootball>> GetAsync()
         {
             try
             {
                 var managers = await _footballContext.Managers.OrderBy(x => x.Name).ToListAsync();
                 if (managers != null)
                 {
-                    return managers;
+                    return _mapper.Map<List<ManagerFootball>>(managers);
                 }
             }
             catch (Exception e)
             {
                 _logger.LogInformation(e, e.ToString());
             }
-            return new List<Manager>();
+            return new List<ManagerFootball>();
         }
 
         //
@@ -56,11 +62,12 @@ namespace Football.Infrastructure.Repositories
         //
         // Returns:
         //     A Manager or null if not found or there is an error.
-        public async Task<Manager> GetByIdAsync(int id)
+        public async Task<ManagerFootball> GetByIdAsync(int id)
         {
             try
             {
-                return await _footballContext.Managers.FindAsync(id);
+                var managerTmp = await _footballContext.Managers.FindAsync(id);
+                return _mapper.Map<ManagerFootball>(managerTmp);
             }
             catch (Exception e)
             {
@@ -79,7 +86,7 @@ namespace Football.Infrastructure.Repositories
         //
         // Returns:
         //     The added manager or null if there is an error.
-        public async Task<Manager> PostAsync(ManagerFootball manager)
+        public async Task<ManagerFootball> CreateAsync(ManagerFootball manager)
         {
             try
             {
@@ -89,7 +96,7 @@ namespace Football.Infrastructure.Repositories
                     RedCard = manager.RedCard };
                 await _footballContext.Managers.AddAsync(managerTmp);
                 await _footballContext.SaveChangesAsync();
-                return managerTmp;
+                return _mapper.Map<ManagerFootball>(managerTmp);
             }
             catch (Exception e)
             {
@@ -111,7 +118,7 @@ namespace Football.Infrastructure.Repositories
         //
         // Returns:
         //     The updated manager or null if there is an error.
-        public async Task<object> UpdateAsync(int id, ManagerFootball manager)
+        public async Task<ManagerFootball> UpdateAsync(int id, ManagerFootball manager)
         {
             try
             {
@@ -122,7 +129,7 @@ namespace Football.Infrastructure.Repositories
                     managerTmp.YellowCard = manager.YellowCard;
                     managerTmp.RedCard = manager.RedCard;
                     await _footballContext.SaveChangesAsync();
-                    return managerTmp;
+                    return manager;
                 }
             }
             catch (Exception e)
