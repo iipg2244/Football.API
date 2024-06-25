@@ -141,6 +141,64 @@
             <returns>If the delete is correct, returns true otherwise false.</returns>
             <response code="200">Ok.</response>
         </member>
+        <member name="M:Football.API.Controllers.v1.RefereeController.GetRefereesAsync">
+            <summary>
+            Gets list of referees.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <returns>List of referees.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.RefereeController.GetRefereeByIdAsync(System.Int32)">
+            <summary>
+            Get referee by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Referee identifier.</param>
+            <returns>If found, returns Referee otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.RefereeController.CreateRefereeAsync(Football.Domain.Entities.Exemples.RefereeFootballExemple)">
+            <summary>
+            Insert referee.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="referee">Referee to insert.</param>
+            <returns>If the insert is correct, returns Referee otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.RefereeController.UpdateRefereeAsync(System.Int32,Football.Domain.Entities.Exemples.RefereeFootballExemple)">
+            <summary>
+            Update referee by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Referee identifier.</param>
+            <param name="referee">Referee with the changes to be made.</param>
+            <returns>If the update is correct, returns Referee otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.RefereeController.DeleteRefereeAsync(System.Int32)">
+            <summary>
+            Delete referee by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Referee identifier.</param>
+            <returns>If the delete is correct, returns true otherwise false.</returns>
+            <response code="200">Ok.</response>
+        </member>
         <member name="M:Football.API.Controllers.v1.StatisticsController.GetYellowCardsAsync">
             <summary>
             Returns the entire list of of people who have participated in matches and have yellow cards.
