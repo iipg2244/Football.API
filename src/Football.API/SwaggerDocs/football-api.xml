@@ -83,6 +83,64 @@
             <returns>If the delete is correct, returns true otherwise false.</returns>
             <response code="200">Ok.</response>
         </member>
+        <member name="M:Football.API.Controllers.v1.PlayerController.GetPlayersAsync">
+            <summary>
+            Gets list of players.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <returns>List of players.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.PlayerController.GetPlayerByIdAsync(System.Int32)">
+            <summary>
+            Get player by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Player identifier.</param>
+            <returns>If found, returns Player otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.PlayerController.CreatePlayerAsync(Football.Domain.Entities.Exemples.PlayerFootballExemple)">
+            <summary>
+            Insert player.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="player">Player to insert.</param>
+            <returns>If the insert is correct, returns Player otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.PlayerController.UpdateAsync(System.Int32,Football.Domain.Entities.Exemples.PlayerFootballExemple)">
+            <summary>
+            Update player by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Player identifier.</param>
+            <param name="player">Player with the changes to be made.</param>
+            <returns>If the update is correct, returns Player otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.PlayerController.DeletePlayerAsync(System.Int32)">
+            <summary>
+            Delete player by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Player identifier.</param>
+            <returns>If the delete is correct, returns true otherwise false.</returns>
+            <response code="200">Ok.</response>
+        </member>
         <member name="M:Football.API.Controllers.v2.IncorrectAlignmentController.Get">
             <summary>
             Generate a background task.

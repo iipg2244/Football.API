@@ -13,14 +13,14 @@ namespace Football.Infrastructure.Repositories
     using Football.Infrastructure.Entities;
     using AutoMapper;
 
-    public class ManagerRepository : IManagerRepository
+    public class PlayerRepository : IPlayerRepository
     {
-        private readonly ILogger<ManagerRepository> _logger;
+        private readonly ILogger<PlayerRepository> _logger;
         private readonly FootballContext _footballContext;
         private readonly IMapper _mapper;
 
-        public ManagerRepository(
-            ILogger<ManagerRepository> logger, 
+        public PlayerRepository(
+            ILogger<PlayerRepository> logger,
             FootballContext footballContext,
             IMapper mapper)
         {
@@ -31,43 +31,43 @@ namespace Football.Infrastructure.Repositories
 
         //
         // Summary:
-        //     Returns the entire list of managers ordered by name.
+        //     Returns the entire list of players ordered by name.
         //
         // Returns:
-        //     A List<Manager>.
-        public async Task<IEnumerable<ManagerFootball>> GetAsync()
+        //     A List<Player>.
+        public async Task<IEnumerable<PlayerFootball>> GetAsync()
         {
             try
             {
-                var managers = await _footballContext.Managers.OrderBy(x => x.Name).ToListAsync();
-                if (managers != null)
+                var players = await _footballContext.Players.OrderBy(x => x.Name).ToListAsync();
+                if (players != null)
                 {
-                    return _mapper.Map<List<ManagerFootball>>(managers);
+                    return _mapper.Map<List<PlayerFootball>>(players);
                 }
             }
             catch (Exception e)
             {
                 _logger.LogInformation(e, e.ToString());
             }
-            return new List<ManagerFootball>();
+            return new List<PlayerFootball>();
         }
 
         //
         // Summary:
-        //     Returns the manager by id.
+        //     Returns the player by id.
         //
         // Parameters:
         //     id:
-        //     Manager Identifier Code.
+        //     Player Identifier Code.
         //
         // Returns:
-        //     A Manager or null if not found or there is an error.
-        public async Task<ManagerFootball> GetByIdAsync(int id)
+        //     A Player or null if not found or there is an error.
+        public async Task<PlayerFootball> GetByIdAsync(int id)
         {
             try
             {
-                var managerTmp = await _footballContext.Managers.FindAsync(id);
-                return _mapper.Map<ManagerFootball>(managerTmp);
+                var playerTmp = await _footballContext.Players.FindAsync(id);
+                return _mapper.Map<PlayerFootball>(playerTmp);
             }
             catch (Exception e)
             {
@@ -78,27 +78,28 @@ namespace Football.Infrastructure.Repositories
 
         //
         // Summary:
-        //     Add sent manager.
+        //     Add sent player.
         //
         // Parameters:
-        //     manager:
-        //     Manager object.
+        //     player:
+        //     Player object.
         //
         // Returns:
-        //     The added manager or null if there is an error.
-        public async Task<ManagerFootball> CreateAsync(ManagerFootball manager)
+        //     The added player or null if there is an error.
+        public async Task<PlayerFootball> CreateAsync(PlayerFootball player)
         {
             try
             {
-                var managerTmp = new Manager() 
-                { 
-                    Name = manager.Name.Left(100), 
-                    YellowCard = manager.YellowCard, 
-                    RedCard = manager.RedCard 
-                };
-                await _footballContext.Managers.AddAsync(managerTmp);
+                var playerTmp = new Player()
+                {
+                    Name = player.Name.Left(100),
+                    YellowCard = player.YellowCard,
+                    RedCard = player.RedCard,
+                    MinutesPlayed = player.MinutesPlayed
+                };               
+                await _footballContext.Players.AddAsync(playerTmp);
                 await _footballContext.SaveChangesAsync();
-                return _mapper.Map<ManagerFootball>(managerTmp);
+                return _mapper.Map<PlayerFootball>(playerTmp);
             }
             catch (Exception e)
             {
@@ -109,29 +110,30 @@ namespace Football.Infrastructure.Repositories
 
         //
         // Summary:
-        //     Update the manager by id.
+        //     Update the player by id.
         //
         // Parameters:
         //     id:
-        //     Manager Identifier Code.
+        //     Player Identifier Code.
         //
-        //     manager:
-        //     Manager object.
+        //     player:
+        //     Player object.
         //
         // Returns:
-        //     The updated manager or null if there is an error.
-        public async Task<ManagerFootball> UpdateAsync(int id, ManagerFootball manager)
+        //     The updated player or null if there is an error.
+        public async Task<PlayerFootball> UpdateAsync(int id, PlayerFootball player)
         {
             try
             {
-                var managerTmp = await _footballContext.Managers.FindAsync(id);
-                if (managerTmp != null)
+                var playerTmp = await _footballContext.Players.FindAsync(id);
+                if (playerTmp != null)
                 {
-                    managerTmp.Name = manager.Name.Left(100);
-                    managerTmp.YellowCard = manager.YellowCard;
-                    managerTmp.RedCard = manager.RedCard;
+                    playerTmp.Name = player.Name.Left(100);
+                    playerTmp.YellowCard = player.YellowCard;
+                    playerTmp.RedCard = player.RedCard;
+                    playerTmp.MinutesPlayed = player.MinutesPlayed;
                     await _footballContext.SaveChangesAsync();
-                    return manager;
+                    return player;
                 }
             }
             catch (Exception e)
@@ -143,11 +145,11 @@ namespace Football.Infrastructure.Repositories
 
         //
         // Summary:
-        //     Delete the manager by id.
+        //     Delete the player by id.
         //
         // Parameters:
         //     id:
-        //     Manager Identifier Code.
+        //     Player Identifier Code.
         //
         // Returns:
         //     true is all ok or false if not found or there is an error.
@@ -155,10 +157,10 @@ namespace Football.Infrastructure.Repositories
         {
             try
             {
-                var managerTmp = await _footballContext.Managers.FindAsync(id);
-                if (managerTmp != null)
+                var playerTmp = await _footballContext.Players.FindAsync(id);
+                if (playerTmp != null)
                 {
-                    _footballContext.Managers.Remove(managerTmp);
+                    _footballContext.Players.Remove(playerTmp);
                     await _footballContext.SaveChangesAsync();
                     return true;
                 }
@@ -170,7 +172,7 @@ namespace Football.Infrastructure.Repositories
             return false;
         }
 
-        ~ManagerRepository()
+        ~PlayerRepository()
         {
             _footballContext.Dispose();
         }

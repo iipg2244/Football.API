@@ -45,7 +45,8 @@ namespace Football.API
             services.AddAutoMapper(typeof(MappingDomainProfile));
             services.AddScoped<IManagerRepository, ManagerRepository>();
             services.AddScoped<IManagerService, ManagerService>();
-            //services.AddScoped<IPlayerService, PlayerService>();
+            services.AddScoped<IPlayerRepository, PlayerRepository>();
+            services.AddScoped<IPlayerService, PlayerService>();
             //services.AddScoped<IRefereeService, RefereeService>();
             //services.AddScoped<IMatchService, MatchService>();
             //services.AddScoped<IStatisticsService, StatisticsService>();

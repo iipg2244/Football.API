@@ -8,5 +8,10 @@ namespace Football.Domain.Entities.Football
         public int RedCard { get; set; }
         [JsonIgnore]
         public int TotalCards => YellowCard + RedCard;
+
+        public bool ShouldSerializeTotalCards()
+        {
+            return false;
+        }
     }
 }

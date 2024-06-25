@@ -19,7 +19,8 @@ namespace Football.API.Controllers.v1
         private readonly IManagerService _managerService;
         private readonly IMapper _mapper;
 
-        public ManagerController(IManagerService managerService, IMapper mapper) {
+        public ManagerController(IManagerService managerService, IMapper mapper) 
+        {
             _managerService = managerService;
             _mapper = mapper;
         }
