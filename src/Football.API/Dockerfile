@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR "/src"
-COPY "." "."
+COPY "./src" "."
 
 WORKDIR "/src/Football.API"
 RUN dotnet restore && dotnet publish -c "Release" --no-restore -o "./out"

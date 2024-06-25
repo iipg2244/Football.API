@@ -8,7 +8,7 @@ services:
     image: ${DOCKER_REGISTRY-}footballapi
     build:
       context: ".."
-      dockerfile: "Football.API/Dockerfile"
+      dockerfile: "./src/Football.API/Dockerfile"
     environment:
       - ASPNETCORE_ENVIRONMENT=DockerCompose
       - ASPNETCORE_URLS=https://+:44367;http://+:8080
@@ -25,7 +25,7 @@ services:
       - ApplicationNetwork
   db:
     container_name: "sqlserver" 
-    build: "../Football.Infrastructure/Docker"
+    build: "./sqlserver"
     volumes:
       - mssqlsystem-data:/var/opt/mssql
       - mssqluser-data:/var/opt/sqlserver
@@ -34,7 +34,7 @@ services:
     networks:
       - ApplicationNetwork
   elastic01:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
+    image: elasticsearch:${ELASTIC_VERSION}
     container_name: "elastic"
     environment:
       - node.name=es01
@@ -56,7 +56,7 @@ services:
       - ApplicationNetwork
   kibana:
     container_name: "kibana"
-    image: docker.elastic.co/kibana/kibana:${ELASTIC_VERSION}
+    image: elastic/kibana:${ELASTIC_VERSION}
     ports:
       - "5600-5601:5601"
     depends_on:
