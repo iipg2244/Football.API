@@ -36,7 +36,7 @@ namespace Football.API.Controllers.v1
         /// <response code="200">Ok.</response>
         [HttpGet]
         [Produces("application/json")]
-        [ProducesResponseType(typeof(List<PlayerFootball>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<PlayerFootball>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetPlayersAsync() => Ok(await _playerService.GetPlayersAsync());
 
         /// <summary>

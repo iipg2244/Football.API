@@ -141,6 +141,36 @@
             <returns>If the delete is correct, returns true otherwise false.</returns>
             <response code="200">Ok.</response>
         </member>
+        <member name="M:Football.API.Controllers.v1.StatisticsController.GetYellowCardsAsync">
+            <summary>
+            Returns the entire list of of people who have participated in matches and have yellow cards.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <returns>List of statistics.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.StatisticsController.GetRedCardsAsync">
+            <summary>
+            Returns the entire list of of people who have participated in matches and have red cards.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <returns>List of statistics.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.StatisticsController.GetMinutesPlayedAsync">
+            <summary>
+            Returns the entire list of of people who have participated in matches and have minutes played.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <returns>List of statistics.</returns>
+            <response code="200">Ok.</response>
+        </member>
         <member name="M:Football.API.Controllers.v2.IncorrectAlignmentController.Get">
             <summary>
             Generate a background task.

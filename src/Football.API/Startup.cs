@@ -49,7 +49,8 @@ namespace Football.API
             services.AddScoped<IPlayerService, PlayerService>();
             //services.AddScoped<IRefereeService, RefereeService>();
             //services.AddScoped<IMatchService, MatchService>();
-            //services.AddScoped<IStatisticsService, StatisticsService>();
+            services.AddScoped<IStatisticsRepository, StatisticsRepository>();
+            services.AddScoped<IStatisticsService, StatisticsService>();
             services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
             services.AddHostedService<JobScheduledService>();
 
