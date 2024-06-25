@@ -45,6 +45,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Football.Application\Football.Application.csproj" />
+    <ProjectReference Include="..\Football.Application\Football.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

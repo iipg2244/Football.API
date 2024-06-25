@@ -1,6 +1,6 @@
 namespace Football.Infrastructure
 {
-    using Football.Domain.Entities.Football;
+    using Football.Infrastructure.Entities;
     using Microsoft.EntityFrameworkCore;
 
     public partial class FootballContext : DbContext

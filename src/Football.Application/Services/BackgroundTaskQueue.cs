@@ -4,7 +4,7 @@ namespace Football.Application.Services
     using System.Threading.Tasks;
     using System.Threading;
     using System;
-    using Football.Domain.Interfaces;
+    using Football.Domain.Contracts;
 
     public class BackgroundTaskQueue : IBackgroundTaskQueue
     {

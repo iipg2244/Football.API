@@ -1,13 +1,12 @@
 namespace Football.Application.Services
 {
-    using Football.Infrastructure;
     using System.Collections.Generic;
     using System;
     using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Logging;
-    using Football.Domain.Interfaces;
+    using Football.Domain.Contracts;
     using Football.Domain.Entities.Football;
 
     public class MatchService : IMatchService

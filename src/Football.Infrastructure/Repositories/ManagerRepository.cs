@@ -1,4 +1,4 @@
-namespace Football.Application.Services
+namespace Football.Infrastructure.Repositories
 {
     using System.Collections.Generic;
     using System;
@@ -10,13 +10,14 @@ namespace Football.Application.Services
     using Football.Infrastructure;
     using Football.Domain.Entities.Football;
     using Football.Domain.Extensions;
+    using Football.Infrastructure.Entities;
 
-    public class RefereeService : IRefereeService
+    public class ManagerRepository : IManagerRepository
     {
-        private readonly ILogger<RefereeService> _logger;
+        private readonly ILogger<ManagerRepository> _logger;
         private readonly FootballContext _footballContext;
 
-        public RefereeService(ILogger<RefereeService> logger, FootballContext footballContext)
+        public ManagerRepository(ILogger<ManagerRepository> logger, FootballContext footballContext)
         {
             _logger = logger;
             _footballContext = footballContext;
@@ -24,42 +25,42 @@ namespace Football.Application.Services
 
         //
         // Summary:
-        //     Returns the entire list of referees ordered by name.
+        //     Returns the entire list of managers ordered by name.
         //
         // Returns:
-        //     A List<Referee>.
-        public async Task<object> GetAsync()
+        //     A List<Manager>.
+        public async Task<List<Manager>> GetAsync()
         {
             try
             {
-                var referees = await _footballContext.Referees.OrderBy(x => x.Name).ToListAsync();
-                if (referees != null)
+                var managers = await _footballContext.Managers.OrderBy(x => x.Name).ToListAsync();
+                if (managers != null)
                 {
-                    return referees;
+                    return managers;
                 }
             }
             catch (Exception e)
             {
                 _logger.LogInformation(e, e.ToString());
             }
-            return new List<Referee>();
+            return new List<Manager>();
         }
 
         //
         // Summary:
-        //     Returns the referee by id.
+        //     Returns the manager by id.
         //
         // Parameters:
         //     id:
-        //     Referee Identifier Code.
+        //     Manager Identifier Code.
         //
         // Returns:
-        //     A Referee or null if not found or there is an error.
-        public async Task<object> GetByIdAsync(int id)
+        //     A Manager or null if not found or there is an error.
+        public async Task<Manager> GetByIdAsync(int id)
         {
             try
             {
-                return await _footballContext.Referees.FindAsync(id);
+                return await _footballContext.Managers.FindAsync(id);
             }
             catch (Exception e)
             {
@@ -70,23 +71,25 @@ namespace Football.Application.Services
 
         //
         // Summary:
-        //     Add sent referee.
+        //     Add sent manager.
         //
         // Parameters:
-        //     referee:
-        //     Referee object.
+        //     manager:
+        //     Manager object.
         //
         // Returns:
-        //     The added referee or null if there is an error.
-        public async Task<object> PostAsync(Referee referee)
+        //     The added manager or null if there is an error.
+        public async Task<Manager> PostAsync(ManagerFootball manager)
         {
             try
             {
-                referee.Id = 0;
-                referee.Name = referee.Name.Left(100);
-                await _footballContext.Referees.AddAsync(referee);
+                var managerTmp = new Manager() { 
+                    Name = manager.Name.Left(100), 
+                    YellowCard = manager.YellowCard, 
+                    RedCard = manager.RedCard };
+                await _footballContext.Managers.AddAsync(managerTmp);
                 await _footballContext.SaveChangesAsync();
-                return referee;
+                return managerTmp;
             }
             catch (Exception e)
             {
@@ -97,28 +100,29 @@ namespace Football.Application.Services
 
         //
         // Summary:
-        //     Update the referee by id.
+        //     Update the manager by id.
         //
         // Parameters:
         //     id:
-        //     Referee Identifier Code.
+        //     Manager Identifier Code.
         //
-        //     referee:
-        //     Referee object.
+        //     manager:
+        //     Manager object.
         //
         // Returns:
-        //     The updated referee or null if there is an error.
-        public async Task<object> UpdateAsync(int id, Referee referee)
+        //     The updated manager or null if there is an error.
+        public async Task<object> UpdateAsync(int id, ManagerFootball manager)
         {
             try
             {
-                var refereeTmp = await _footballContext.Referees.FindAsync(id);
-                if (refereeTmp != null)
+                var managerTmp = await _footballContext.Managers.FindAsync(id);
+                if (managerTmp != null)
                 {
-                    refereeTmp.Name = referee.Name.Left(100);
-                    refereeTmp.MinutesPlayed = referee.MinutesPlayed;
+                    managerTmp.Name = manager.Name.Left(100);
+                    managerTmp.YellowCard = manager.YellowCard;
+                    managerTmp.RedCard = manager.RedCard;
                     await _footballContext.SaveChangesAsync();
-                    return refereeTmp;
+                    return managerTmp;
                 }
             }
             catch (Exception e)
@@ -130,22 +134,22 @@ namespace Football.Application.Services
 
         //
         // Summary:
-        //     Delete the referee by id.
+        //     Delete the manager by id.
         //
         // Parameters:
         //     id:
-        //     Referee Identifier Code.
+        //     Manager Identifier Code.
         //
         // Returns:
         //     true is all ok or false if not found or there is an error.
-        public async Task<object> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             try
             {
-                var refereeTmp = await _footballContext.Referees.FindAsync(id);
-                if (refereeTmp != null)
+                var managerTmp = await _footballContext.Managers.FindAsync(id);
+                if (managerTmp != null)
                 {
-                    _footballContext.Referees.Remove(refereeTmp);
+                    _footballContext.Managers.Remove(managerTmp);
                     await _footballContext.SaveChangesAsync();
                     return true;
                 }
@@ -157,7 +161,7 @@ namespace Football.Application.Services
             return false;
         }
 
-        ~RefereeService()
+        ~ManagerRepository()
         {
             _footballContext.Dispose();
         }

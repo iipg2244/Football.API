@@ -1,6 +1,6 @@
 namespace Football.API.Controllers.v1
 {
-    using Football.Domain.Interfaces;
+    using Football.Domain.Contracts;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.DependencyInjection;

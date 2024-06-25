@@ -7,7 +7,7 @@ namespace Football.Application.Services
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Logging;
     using Football.Application.Dtos;
-    using Football.Domain.Interfaces;
+    using Football.Domain.Contracts;
     using Football.Infrastructure;
 
     public class StatisticsService : IStatisticsService
@@ -87,7 +87,7 @@ namespace Football.Application.Services
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.ToString());
+                _logger.LogInformation(e, e.ToString());
             }
             return new List<dynamic>();
         }
@@ -158,7 +158,7 @@ namespace Football.Application.Services
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.ToString());
+                _logger.LogInformation(e, e.ToString());
             }
             return new List<dynamic>();
         }
@@ -216,7 +216,7 @@ namespace Football.Application.Services
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.ToString());
+                _logger.LogInformation(e, e.ToString());
             }
             return new List<dynamic>();
         }

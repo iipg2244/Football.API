@@ -5,7 +5,7 @@ namespace Football.Application.Services
     using System;
     using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Logging;
-    using Football.Domain.Interfaces;
+    using Football.Domain.Contracts;
 
     public class JobScheduledService : BackgroundService
     {
