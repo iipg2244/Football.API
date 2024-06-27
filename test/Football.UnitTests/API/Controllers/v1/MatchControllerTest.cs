@@ -1,4 +1,4 @@
-namespace Football.API.Tests.Controllers.v1
+namespace Football.UnitTests.API.Controllers.v1
 {
     using Football.API.Controllers.v1;
     using Football.Domain.Contracts;
