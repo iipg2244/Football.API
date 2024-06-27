@@ -16,6 +16,10 @@ namespace Football.Infrastructure.Mappings
             CreateMap<PlayerFootball, PlayerFootballExemple>();
             CreateMap<RefereeFootballExemple, RefereeFootball>();
             CreateMap<RefereeFootball, RefereeFootballExemple>();
+            CreateMap<PlayerMatchAwayFootballExemple, PlayerMatchAwayFootball>();
+            CreateMap<PlayerMatchAwayFootball, PlayerMatchAwayFootballExemple>();
+            CreateMap<PlayerMatchHouseFootballExemple, PlayerMatchHouseFootball>();
+            CreateMap<PlayerMatchHouseFootball, PlayerMatchHouseFootballExemple>();
         }
     }
 }

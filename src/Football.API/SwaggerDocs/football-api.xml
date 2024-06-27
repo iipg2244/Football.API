@@ -83,6 +83,64 @@
             <returns>If the delete is correct, returns true otherwise false.</returns>
             <response code="200">Ok.</response>
         </member>
+        <member name="M:Football.API.Controllers.v1.MatchController.GetMatchesAsync">
+            <summary>
+            Gets list of matchs.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <returns>List of matchs.</returns>
+            <response code="200">Ok.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.MatchController.GetMatchByIdAsync(System.Int32)">
+            <summary>
+            Get match by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Match identifier.</param>
+            <returns>If found, returns Match otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.MatchController.CreateMatchAsync(Football.Domain.Entities.Exemples.MatchFootballExemple)">
+            <summary>
+            Insert match.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="match">Match to insert.</param>
+            <returns>If the insert is correct, returns Match otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.MatchController.UpdateMatchAsync(System.Int32,Football.Domain.Entities.Exemples.MatchFootballExemple)">
+            <summary>
+            Update match by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Match identifier.</param>
+            <param name="match">Match with the changes to be made.</param>
+            <returns>If the update is correct, returns Match otherwise null.</returns>
+            <response code="200">Ok.</response>
+            <response code="404">Not found.</response>
+        </member>
+        <member name="M:Football.API.Controllers.v1.MatchController.DeleteMatchAsync(System.Int32)">
+            <summary>
+            Delete match by id.
+            </summary>
+            <remarks>
+            # Markdown
+            </remarks>
+            <param name="id">Match identifier.</param>
+            <returns>If the delete is correct, returns true otherwise false.</returns>
+            <response code="200">Ok.</response>
+        </member>
         <member name="M:Football.API.Controllers.v1.PlayerController.GetPlayersAsync">
             <summary>
             Gets list of players.
@@ -117,7 +175,7 @@
             <response code="200">Ok.</response>
             <response code="404">Not found.</response>
         </member>
-        <member name="M:Football.API.Controllers.v1.PlayerController.UpdateAsync(System.Int32,Football.Domain.Entities.Exemples.PlayerFootballExemple)">
+        <member name="M:Football.API.Controllers.v1.PlayerController.UpdatePlayerAsync(System.Int32,Football.Domain.Entities.Exemples.PlayerFootballExemple)">
             <summary>
             Update player by id.
             </summary>

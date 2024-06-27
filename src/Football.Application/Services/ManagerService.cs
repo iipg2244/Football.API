@@ -4,7 +4,6 @@ namespace Football.Application.Services
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.Extensions.Logging;
     using Football.Domain.Contracts;
     using Football.Domain.Entities.Football;
     using Football.Domain.Extensions;

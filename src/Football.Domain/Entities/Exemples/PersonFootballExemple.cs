@@ -1,4 +1,4 @@
-namespace Football.Domain.Entities.Football
+namespace Football.Domain.Entities.Exemples
 {
     public abstract class PersonFootballExemple
     {

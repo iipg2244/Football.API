@@ -5,7 +5,6 @@ namespace Football.Application.Services
     using System.Linq;
     using System.Threading.Tasks;
     using Football.Domain.Contracts;
-    using Football.Infrastructure;
     using Football.Domain.Entities.Football;
     using Football.Domain.Extensions;
 

@@ -100,7 +100,7 @@ namespace Football.API.Controllers.v1
         [Produces("application/json")]
         [ProducesResponseType(typeof(PlayerFootballExemple), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Nullable), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> UpdateAsync([FromHeader][Required] int id, [FromBody][Required] PlayerFootballExemple player)
+        public async Task<IActionResult> UpdatePlayerAsync([FromHeader][Required] int id, [FromBody][Required] PlayerFootballExemple player)
         {
             var response = await _playerService.UpdatePlayerAsync(id, _mapper.Map<PlayerFootball>(player));
             if (response == null)
