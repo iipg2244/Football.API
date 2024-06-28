@@ -308,5 +308,8 @@
             <returns>Not Implemented Exception.</returns>
             <response code="501">Not Implemented.</response>
         </member>
+        <member name="T:Refit.Implementation.Generated">
+            <inheritdoc />
+        </member>
     </members>
 </doc>
