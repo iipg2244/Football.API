@@ -25,7 +25,8 @@ services:
     networks:
       - ApplicationNetwork
   db:
-    container_name: "sqlserver" 
+    container_name: "sqlserver"
+    image: iipg2244/sqlserver
     build: 
       context: "./sqlserver"
       dockerfile: "./Dockerfile"
@@ -37,8 +38,8 @@ services:
     networks:
       - ApplicationNetwork
   elastic01:
-    image: elasticsearch:${ELASTIC_VERSION}
     container_name: "elastic"
+    image: elasticsearch:${ELASTIC_VERSION}
     environment:
       - node.name=es01
       - cluster.name=es-docker-cluster

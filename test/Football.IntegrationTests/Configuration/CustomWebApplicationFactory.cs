@@ -33,10 +33,7 @@ namespace Football.IntegrationTests.Configuration
             return _httpClient;
         }
 
-        public T GetService<T>() where T : notnull
-        {
-            return Services.GetRequiredService<T>();
-        }
+        public T GetService<T>() where T : notnull => Services.GetRequiredService<T>();
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {

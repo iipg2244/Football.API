@@ -10,7 +10,7 @@ namespace Football.IntegrationTests.API.Controllers.V1
     using Xunit;
 
     [Collection("Football.IntegrationTests.API.Controllers.V1")]
-    public class ManagerController : ControllerBaseTests<IManagerController>
+    public class ManagerControllerTest : ControllerBaseTest<IManagerController>
     {
         private ApiVersion ApiVersion { get; } = ApiVersion.v1;
         

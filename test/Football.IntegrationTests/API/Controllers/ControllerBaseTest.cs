@@ -6,9 +6,9 @@ namespace Football.IntegrationTests.API.Controllers
     using Football.IntegrationTests.Configuration;
     using Microsoft.Extensions.DependencyInjection;
 
-    public abstract class ControllerBaseTests<T>
+    public abstract class ControllerBaseTest<T>
     {
-        protected ControllerBaseTests()
+        protected ControllerBaseTest()
         {
             webApplicationFactory = new CustomWebApplicationFactory();
             var scopeProvider = webApplicationFactory.Services.GetService<IServiceScopeFactory>().CreateScope().ServiceProvider;
