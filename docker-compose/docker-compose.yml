@@ -20,8 +20,10 @@ services:
       - "44367:44367"
       - "8080:8080"
     depends_on:
-      - db
-      - elastic01
+      db:
+        condition: service_healthy
+      elastic01:
+        condition: service_started
     networks:
       - ApplicationNetwork
   db:
@@ -30,11 +32,19 @@ services:
     build: 
       context: "./sqlserver"
       dockerfile: "./Dockerfile"
+    env_file:
+      - .env
     volumes:
       - mssqlsystem-data:/var/opt/mssql
       - mssqluser-data:/var/opt/sqlserver
     ports:
       - "1433:1433"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S db -U SA -P '${MSSQL_SA_PASSWORD}' -C -Q 'SELECT 1'"]
+      interval: 1s
+      timeout: 5s
+      retries: 50
+      start_period: 30s
     networks:
       - ApplicationNetwork
   elastic01:
