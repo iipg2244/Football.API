@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>$(NoWarn);NU1904</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

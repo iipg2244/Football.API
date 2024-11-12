@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <UserSecretsId>a7ee2d91-520e-418b-ba41-bf375ee741c8</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerComposeProjectPath>..\docker-compose\docker-compose.dcproj</DockerComposeProjectPath>
@@ -26,7 +27,7 @@
     <PackageReference Include="Serilog.Enrichers.Environment" Version="[2.3.0]" />
     <PackageReference Include="Serilog.Sinks.Debug" Version="[2.0.0]" />
     <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="[6.5.0]" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
   </ItemGroup>
 
   <ItemGroup>
